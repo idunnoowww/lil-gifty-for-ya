@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G × S — for ghiza ♡</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>♡</text></svg>">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --warm-cream: #F7EFE7;
+      --dusty-rose: #C98F9B;
+      --soft-blush: #E8C6C9;
+      --deep-burgundy: #542C35;
+      --soft-brown: #654C4C;
+      --old-gold: #B89B72;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--warm-cream);
+      color: var(--soft-brown);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrapper {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    /* Typography Classes */
+    .serif { font-family: 'Cormorant Garamond', serif; }
+    .handwriting { font-family: 'Caveat', cursive; }
+
+    .brand-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      letter-spacing: 3px;
+      color: var(--old-gold);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      color: var(--old-gold);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    /* Section Cards */
+    .card {
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid var(--soft-blush);
+      border-radius: 20px;
+      padding: 32px 24px;
+      box-shadow: 0 4px 20px rgba(84, 44, 53, 0.03);
+      position: relative;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .card-burgundy {
+      background: var(--deep-burgundy);
+      color: var(--warm-cream);
+      border: 1px solid rgba(184, 155, 114, 0.3);
+      box-shadow: 0 8px 30px rgba(84, 44, 53, 0.15);
+    }
+
+    .card-burgundy p {
+      color: #E6D8D2;
+    }
+
+    /* Cover Section */
+    .cover-section {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border: 1px solid var(--soft-blush);
+      border-radius: 24px;
+      padding: 48px 24px;
+      background: rgba(255, 255, 255, 0.4);
+      position: relative;
+    }
+
+    .cover-flower {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 20px;
+      opacity: 0.6;
+      color: var(--old-gold);
+    }
+
+    h1 {
+      font-size: 44px;
+      color: var(--deep-burgundy);
+      font-weight: 500;
+      line-height: 1.2;
+      margin: 12px 0;
+    }
+
+    /* Buttons */
+    .btn {
+      background: var(--dusty-rose);
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(201, 143, 155, 0.3);
+      text-decoration: none;
+      margin-top: 24px;
+    }
+
+    .btn:hover {
+      background: #B57A87;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(201, 143, 155, 0.4);
+    }
+
+    /* 07 — Little Things Cards Expandable */
+    .things-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .expandable-card {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid var(--soft-blush);
+      border-radius: 14px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .expandable-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--dusty-rose);
+    }
+
+    .card-header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-num {
+      font-size: 11px;
+      color: var(--old-gold);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .card-title {
+      font-size: 20px;
+      color: var(--deep-burgundy);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .card-desc {
+      display: none;
+      font-size: 14px;
+      color: var(--soft-brown);
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--soft-blush);
+      line-height: 1.7;
+    }
+
+    /* 08 — Envelopes Grid */
+    .envelope-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    @media (min-width: 480px) {
+      .envelope-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .envelope-item {
+      background: var(--warm-cream);
+      border: 1px solid var(--soft-blush);
+      border-radius: 14px;
+      padding: 20px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .envelope-item:hover {
+      background: #FFFFFF;
+      transform: translateY(-3px);
+      border-color: var(--dusty-rose);
+      box-shadow: 0 6px 15px rgba(84, 44, 53, 0.05);
+    }
+
+    /* 09 — Reasons List */
+    .reasons-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .reason-box {
+      border-left: 2px solid var(--dusty-rose);
+      padding-left: 16px;
+    }
+
+    .reason-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--deep-burgundy);
+    }
+
+    .reason-text {
+      font-size: 13.5px;
+      color: var(--soft-brown);
+      margin-top: 4px;
+    }
+
+    /* 10 — Dictionary Section */
+    .dict-box {
+      background: #FFFDFB;
+      border: 1px solid var(--soft-blush);
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 16px;
+    }
+
+    .dict-entry {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(232, 198, 201, 0.4);
+      cursor: pointer;
+    }
+
+    .dict-entry:last-child {
+      border-bottom: none;
+    }
+
+    .dict-term {
+      font-size: 18px;
+      color: var(--deep-burgundy);
+      font-weight: 600;
+    }
+
+    .dict-meaning {
+      display: none;
+      font-size: 13.5px;
+      color: var(--soft-brown);
+      margin-top: 4px;
+      font-style: italic;
+      padding-left: 8px;
+      border-left: 2px solid var(--old-gold);
+    }
+
+    /* Modal / Letter Popup */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(84, 44, 53, 0.65);
+      backdrop-filter: blur(5px);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-paper {
+      background: var(--warm-cream);
+      border: 1px solid var(--old-gold);
+      border-radius: 20px;
+      padding: 32px 24px;
+      max-width: 480px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+      animation: modalFadeUp 0.4s ease;
+      position: relative;
+    }
+
+    @keyframes modalFadeUp {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Floating Petals */
+    .petal {
+      position: fixed;
+      color: var(--dusty-rose);
+      font-size: 14px;
+      pointer-events: none;
+      animation: floatPetal 7s linear infinite;
+      z-index: 99;
+    }
+
+    @keyframes floatPetal {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0.9; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    .footer-mark {
+      text-align: center;
+      padding: 30px 0 10px;
+      font-size: 12px;
+      color: var(--old-gold);
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <!-- 05 — COVER -->
+    <div class="cover-section" id="cover">
+      <div class="cover-flower">✦</div>
+      <div class="brand-mark">G × S</div>
+      <span class="subtitle" style="margin-top: 16px;">a little love letter for</span>
+      <h1 class="serif">GHIZA</h1>
+      <p style="font-size: 12px; letter-spacing: 2px; color: var(--old-gold); margin-bottom: 8px;">01 · 10 · 2026</p>
+      <p class="handwriting" style="font-size: 22px; color: var(--dusty-rose);">happy girlfriend day, my love ♡</p>
+      <a href="#intro" class="btn">open this letter →</a>
+    </div>
+
+    <!-- 06 — BEFORE ANYTHING ELSE... -->
+    <div class="card" id="intro">
+      <div class="brand-mark">G × S</div>
+      <h2 class="serif" style="font-size: 28px; color: var(--deep-burgundy); margin-top: 4px;">before anything else...</h2>
+      <span class="subtitle" style="margin-top: 2px;">there's something i've been wanting to tell you.</span>
+      
+      <div style="font-size: 14.5px; margin-top: 16px; display: flex; flex-direction: column; gap: 12px; color: var(--soft-brown);">
+        <p>Jujur, aku sempat kebingungan harus mulai dari mana buat bikin ini. Setiap kali mau ngetik, rasanya teks biasa di chat selalu terlalu sedikit dan terlalu cepat tenggelam untuk nyampein apa yang sebenarnya aku rasain ke kamu.</p>
+        <p>Jadi, ketimbang terus nyari kata-kata yang 'sempurna', aku memutuskan untuk bikin tempat kecil ini. Sesuatu yang sengaja dibuat pelan-pelan, yang bisa kamu buka kapan pun kamu butuh pengingat hangat.</p>
+        <p>Hubungan kita mungkin enggak selalu sederhana. Ada hari-hari yang rumit, ada jarak, dan ada hal-hal yang kadang susah dijelasin. Tapi justru karena itu semua, perasaan aku ke kamu enggak pernah bisa diringkas cuma jadi satu kalimat biasa.</p>
+        <p class="handwriting" style="font-size: 20px; color: var(--dusty-rose); margin-top: 8px;">so before you open anything else, just know that every little thing here was made with you in mind. ♡</p>
+      </div>
+    </div>
+
+    <!-- 07 — THE LITTLE THINGS ABOUT YOU -->
+    <div class="card">
+      <h2 class="serif" style="font-size: 28px; color: var(--deep-burgundy);">the little things about you</h2>
+      <span class="subtitle">things i don't always say out loud. (click to read)</span>
+
+      <div class="things-grid">
+        <div class="expandable-card" onclick="toggleCard(this)">
+          <div class="card-header-flex">
+            <div class="card-title">your softness</div>
+            <span class="card-num">01</span>
+          </div>
+          <div class="card-desc">
+            Cara kamu peduli dan ketulusan sisi lembut kamu itu sesuatu yang langka. Di saat dunia bisa terasa begitu sibuk dan keras, kelembutan kamu selalu jadi alasan kenapa berada di dekat kamu rasanya seaman dan setenang itu.
+          </div>
+        </div>
+
+        <div class="expandable-card" onclick="toggleCard(this)">
+          <div class="card-header-flex">
+            <div class="card-title">the way you care</div>
+            <span class="card-num">02</span>
+          </div>
+          <div class="card-desc">
+            Hal-hal kecil yang sering kamu lakuin—yang mungkin kamu sendiri enggak sadar—selalu punya cara buat menyentuh hati aku. Perhatian-perhatian kecil kamu itu buktinya kalau kamu punya hati yang begitu luas.
+          </div>
+        </div>
+
+        <div class="expandable-card" onclick="toggleCard(this)">
+          <div class="card-header-flex">
+            <div class="card-title">your little habits</div>
+            <span class="card-num">03</span>
+          </div>
+          <div class="card-desc">
+            Kebiasaan-kebiasaan kecil kamu, cara kamu merespons sesuatu, nada bicara kamu saat bercerita hal random—semua detail kecil itu adalah alasan kenapa kamu selalu begitu menggemaskan dan istimewa di mata aku.
+          </div>
+        </div>
+
+        <div class="expandable-card" onclick="toggleCard(this)">
+          <div class="card-header-flex">
+            <div class="card-title">the way you understand me</div>
+            <span class="card-num">04</span>
+          </div>
+          <div class="card-desc">
+            Kamu selalu berusaha memahami aku, bahkan di saat aku sendiri kesulitan menjelaskan apa yang aku rasain. Kamu bikin rentan terasa aman, dan itu sesuatu yang sangat berarti buat aku.
+          </div>
+        </div>
+
+        <div class="expandable-card" onclick="toggleCard(this)">
+          <div class="card-header-flex">
+            <div class="card-title">your presence</div>
+            <span class="card-num">05</span>
+          </div>
+          <div class="card-desc">
+            Cuma dengan tahu kalau kamu ada di dunia ini dan hadir dalam hidup aku, banyak hal rasanya jadi jauh lebih ringan. Kehadiran kamu punya tempat tersendiri yang enggak akan bisa digantikan oleh siapa pun.
+          </div>
+        </div>
+
+        <div class="expandable-card" onclick="toggleCard(this)">
+          <div class="card-header-flex">
+            <div class="card-title">simply you</div>
+            <span class="card-num">06</span>
+          </div>
+          <div class="card-desc">
+            I don't love a perfect version of you. I love you exactly as you are—dengan seluruh keraguan kamu, tawa kamu, dan keunikan kamu. Kamu, tanpa perlu berpura-pura jadi siapa pun, sudah sangat cukup.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 08 — 💌 OPEN WHEN... -->
+    <div class="card">
+      <h2 class="serif" style="font-size: 28px; color: var(--deep-burgundy);">open when...</h2>
+      <span class="subtitle">for the days when you need a little piece of me.</span>
+
+      <div class="envelope-grid">
+        <div class="envelope-item" onclick="openLetter('open when you miss me', 'Kalau kamu lagi kangen, ingat ya kalau aku kemungkinan besar lagi mikirin kamu juga di detik yang sama. Jarak atau kesibukan enggak pernah ngurangin seberapa dekat kamu di dalam hati aku. I wish I could just be beside you right now.')">
+          <div style="font-size: 24px;">💌</div>
+          <p style="font-size: 13px; font-weight: 600; color: var(--deep-burgundy);">you miss me</p>
+        </div>
+
+        <div class="envelope-item" onclick="openLetter('open when you\'re sad', 'Tarik napas pelan-pelan ya, sayang. Enggak apa-apa buat merasa sedih atau lelah hari ini. Kamu enggak harus selalu kuat setiap saat. Aku di sini, menyayangi kamu tanpa menuntut kamu untuk langsung baik-baik saja.')">
+          <div style="font-size: 24px;">💌</div>
+          <p style="font-size: 13px; font-weight: 600; color: var(--deep-burgundy);">you're sad</p>
+        </div>
+
+        <div class="envelope-item" onclick="openLetter('open when you need reassurance', 'Yes, I love you. Yes, you matter to me—so much more than you know. Kamu pernah dan akan selalu jadi seseorang yang sangat berharga buat aku. Jangan pernah ragu soal posisi kamu di hidup aku ya.')">
+          <div style="font-size: 24px;">💌</div>
+          <p style="font-size: 13px; font-weight: 600; color: var(--deep-burgundy);">need reassurance</p>
+        </div>
+
+        <div class="envelope-item" onclick="openLetter('open when you feel alone', 'Kamu enggak pernah sendirian. Bahkan saat suasana lagi sepi atau terasa berat, ingat kalau ada aku yang selalu mendukung kamu, mendoakan kamu, dan ada di pihak kamu.')">
+          <div style="font-size: 24px;">💌</div>
+          <p style="font-size: 13px; font-weight: 600; color: var(--deep-burgundy);">you feel alone</p>
+        </div>
+
+        <div class="envelope-item" onclick="openLetter('open when you can\'t sleep', 'Sudah malam... istirahat ya. Coba meram sebentar dan lepasin semua beban pikiran hari ini. Bayangin kita lagi ngobrol santai jam 2 pagi tanpa ada hal yang perlu dikhawatirin. Tidur yang nyenyak ya ♡')">
+          <div style="font-size: 24px;">💌</div>
+          <p style="font-size: 13px; font-weight: 600; color: var(--deep-burgundy);">you can't sleep</p>
+        </div>
+
+        <div class="envelope-item" onclick="openLetter('open when you doubt yourself', 'Coba deh lihat diri kamu lewat sudut pandang aku sebentar aja. Kamu itu sosok yang hebat, lembut, dan penuh kebaikan. Jangan biarkan keraguan bikin kamu lupa seberapa luar biasanya diri kamu.')">
+          <div style="font-size: 24px;">💌</div>
+          <p style="font-size: 13px; font-weight: 600; color: var(--deep-burgundy);">you doubt yourself</p>
+        </div>
+
+        <div class="envelope-item" onclick="openLetter('open when we\'re not okay', 'Misunderstanding doesn\'t erase love. Saat kita lagi enggak sejalan atau ada kesalahpahaman, bukan berarti kasih sayang itu hilang. Being upset doesn\'t mean everything is over. Mari pelan-pelan bicarain, karena kamu selalu berharga buat aku perjuangkan.')">
+          <div style="font-size: 24px;">💌</div>
+          <p style="font-size: 13px; font-weight: 600; color: var(--deep-burgundy);">we're not okay</p>
+        </div>
+
+        <div class="envelope-item" onclick="openLetter('open when you wonder why i love you', 'Karena kamu adalah kamu. Ketulusan kamu, cara kamu tersenyum, dan bagaimana kamu membuat hal-hal biasa terasa hangat. Loving you isn\'t complicated—it\'s the most natural thing my heart does.')">
+          <div style="font-size: 24px;">💌</div>
+          <p style="font-size: 13px; font-weight: 600; color: var(--deep-burgundy);">why i love you</p>
+        </div>
+
+        <div class="envelope-item" onclick="openLetter('open when you want to know what you mean to me', 'Kamu itu rumah, tempat aman, dan pikiran favorit aku di tengah riuhnya hari. Kamu mengajari aku banyak hal tentang ketulusan. You genuinely mean the world to me, Ghiza.')">
+          <div style="font-size: 24px;">💌</div>
+          <p style="font-size: 13px; font-weight: 600; color: var(--deep-burgundy);">what you mean to me</p>
+        </div>
+
+        <div class="envelope-item" onclick="openLetter('open when you finish this website', 'You actually opened everything?? 😭 Makasih ya udah meluangkan waktu buat membaca setiap sudut kecil yang aku buat ini. Aku harap ini bisa bikin kamu tersenyum dan merasa dicintai hari ini. Happy Girlfriend Day, my love!')">
+          <div style="font-size: 24px;">💌</div>
+          <p style="font-size: 13px; font-weight: 600; color: var(--deep-burgundy);">you finish this website</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 09 — 10 LITTLE REASONS -->
+    <div class="card">
+      <h2 class="serif" style="font-size: 28px; color: var(--deep-burgundy);">10 little reasons</h2>
+      <span class="subtitle">although ten could never really be enough.</span>
+
+      <div class="reasons-list">
+        <div class="reason-box">
+          <div class="reason-title">01 — because you're you.</div>
+          <div class="reason-text">Mungkin ini alasan paling sederhana, tapi juga yang paling tulus tanpa perlu alasan berbelit.</div>
+        </div>
+        <div class="reason-box">
+          <div class="reason-title">02 — because of your softness.</div>
+          <div class="reason-text">Kelembutan cara kamu memperlakukan orang lain selalu bikin aku kagum.</div>
+        </div>
+        <div class="reason-box">
+          <div class="reason-title">03 — because you make ordinary things feel special.</div>
+          <div class="reason-text">Hal simpel dan biasa rasanya jadi bermakna kalau dilewati atau diceritain sama kamu.</div>
+        </div>
+        <div class="reason-box">
+          <div class="reason-title">04 — because you make me feel understood.</div>
+          <div class="reason-text">Bersama kamu, aku merasa didengar tanpa perlu takut dihakimi.</div>
+        </div>
+        <div class="reason-box">
+          <div class="r
